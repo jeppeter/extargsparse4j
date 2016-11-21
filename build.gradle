@@ -1,0 +1,24 @@
+version = '1.0'
+gradle.projectsEvaluated {
+	tasks.withType(JavaCompile) {
+		options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+	}
+}
+
+
+apply plugin: 'java'
+apply from: './maven-push.gradle'
+dependencies {
+	compile group: 'com.github.jeppeter', name: 'reext', version: '1.0'
+	compile group: 'com.github.jeppeter', name: 'jsonext',version: '1.0'
+	compile group: 'net.sourceforge.argparse4j', name: 'argparse4j', version: '0.7.0'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api',version: '2.7'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core',version: '2.7'
+	compile group: 'net.java.dev.jna', name: 'jna', version: '4.2.2'
+    testCompile 'junit:junit:4.11'
+}
+
+repositories {
+    mavenCentral()
+}
+
